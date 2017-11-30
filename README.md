@@ -53,7 +53,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image as implemented in the method pipeline(). After various combinations, the lane lines are clearly visible. Here's an example of my output for this step.
+Thanks to the suggestions from the reviewer, I used a combination of color thresholds to generate a binary image as implemented in the method pipeline(). After the combination of yellow and white selections, the lane lines are clearly visible. Here's an example of my output for this step.
 ![alt text][image4]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
@@ -62,18 +62,18 @@ The code for my perspective transform includes a function called `warp()`,  The 
 After tuning the result, I chose the source and destination points in the following manner:
 
 ```python
-src = np.float32([[585, 460],[695, 460],[1126, 720],[203, 720]])
-dst = np.float32([[275, 0],[1025,0], [960, 720], [320, 720]])
+src = np.float32([[545, 460], [735, 460],  [1280, 700], [0, 700]])
+dst = np.float32([[0, 0], [1280, 0], [1280, 720], [0, 720]])
 ```
 
 This resulted in the following source and destination points:
 
 |  Source   | Destination |
 |:---------:|:-----------:|
-| 585, 460  |   275, 0    |
-| 695, 460  |   1025, 0   |
-| 1126, 720 |  960, 720   |
-| 203, 720  |  320, 720   |
+| 545, 460  |    0, 0     |
+| 735, 460  |   1280, 0   |
+| 1280, 700 |  1280, 720  |
+|  0, 700   |   0, 720    |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 ![alt text][image5]
